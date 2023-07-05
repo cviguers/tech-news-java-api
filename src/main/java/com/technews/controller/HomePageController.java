@@ -1,5 +1,6 @@
 package com.technews.controller;
 
+import com.technews.model.Comment;
 import com.technews.model.Post;
 import com.technews.model.User;
 import com.technews.repository.CommentRepository;
@@ -28,7 +29,6 @@ public class HomePageController {
 
     @Autowired
     CommentRepository commentRepository;
-
     @GetMapping("/login")
     public String login(Model model, HttpServletRequest request) {
 
@@ -39,7 +39,6 @@ public class HomePageController {
         model.addAttribute("user", new User());
         return "login";
     }
-
     @GetMapping("/users/logout")
     public String logout(HttpServletRequest request) {
         if (request.getSession(false) != null) {
@@ -47,7 +46,6 @@ public class HomePageController {
         }
         return "redirect:/login";
     }
-
     @GetMapping("/")
     public String homepageSetup(Model model, HttpServletRequest request) {
         User sessionUser = new User();
@@ -76,7 +74,6 @@ public class HomePageController {
 
         return "homepage";
     }
-
     @GetMapping("/dashboard")
     public String dashboardPageSetup(Model model, HttpServletRequest request) throws Exception {
 
